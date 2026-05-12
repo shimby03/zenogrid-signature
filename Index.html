@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>ZENOGRID — Email Signature</title>
+  <style>
+    /* These styles are ONLY for this preview page — the actual signature
+     below uses 100% inline styles so Gmail preserves the design. */
+    body {
+      margin: 0;
+      padding: 48px 24px;
+      background: #F5F3EE;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      color: #1A1A1A;
+    }
+
+    .wrap {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      font-size: 12px;
+      letter-spacing: 6px;
+      color: #A88B4E;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0 0 6px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .lede {
+      color: #6B7280;
+      font-size: 14px;
+      margin: 0 0 36px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: #A88B4E;
+      font-weight: 700;
+      margin: 40px 0 10px;
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E8E4DA;
+      border-radius: 6px;
+      padding: 32px 32px 28px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      display: inline-block;
+    }
+
+    .card.dark {
+      background: #1f1e1d;
+      border-color: #1D2028;
+    }
+
+    .copy-hint {
+      font-size: 12px;
+      color: #8A8E96;
+      margin: 10px 0 0;
+    }
+
+    ol {
+      padding-left: 20px;
+      color: #374151;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    ol li {
+      margin-bottom: 4px;
+    }
+
+    code {
+      background: #EFEAE0;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12.5px;
+      color: #7A5E24;
+    }
+
+    .tip {
+      background: #FFF8E8;
+      border-left: 3px solid #C9A961;
+      padding: 12px 14px;
+      border-radius: 3px;
+      font-size: 13px;
+      color: #4B4330;
+      line-height: 1.55;
+    }
+
+    /* 복사 버튼 스타일 */
+    .copy-button-wrapper {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+      align-items: center;
+    }
+
+    .copy-button {
+      background: #A88B4E;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    .copy-button:hover {
+      background: #C9A961;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(169, 139, 78, 0.3);
+    }
+
+    .copy-button:active {
+      transform: translateY(0);
+    }
+
+    .copy-feedback {
+      font-size: 13px;
+      color: #10B981;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .copy-feedback.show {
+      opacity: 1;
+    }
+  </style>
+  <script>
+    // 서명을 클립보드에 복사하는 함수
+    function copySignature(tableId, feedbackId) {
+      const table = document.getElementById(tableId);
+      const range = document.createRange();
+      range.selectNodeContents(table);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+
+      try {
+        document.execCommand('copy');
+        selection.removeAllRanges();
+
+        // 피드백 표시
+        const feedback = document.getElementById(feedbackId);
+        feedback.classList.add('show');
+        setTimeout(() => {
+          feedback.classList.remove('show');
+        }, 2000);
+      } catch (err) {
+        alert('복사에 실패했습니다. 브라우저를 확인하거나 수동으로 복사해주세요.');
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="page-title">ZENOGRID / EMAIL SIGNATURE</div>
+    <h1>ZENOGRID 전자 서명</h1>
+
+    <div class="card">
+      <!-- === SIGNATURE START (COMPACT) ======================== -->
+      <table id="sig-compact" cellpadding="0" cellspacing="0" border="0" role="presentation"
+        style="border-collapse:collapse;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Helvetica,Arial,sans-serif;color:#1A1A1A;">
+        <tr>
+          <td style="padding:0;">
+            <!-- ⚠️ 아래 이름과 직급을 수정하세요 (Version C - Compact) -->
+            <div style="font-size:14px;font-weight:700;color:#1f1e1d;letter-spacing:-0.2px;line-height:1.3;">
+              김이름 <!-- 여기를 본인 이름으로 변경 -->
+              <span style="color:#C9A961;font-weight:400;margin:0 6px;">│</span>
+              <span style="font-size:11px;font-weight:500;color:#6B7280;letter-spacing:0;">직군</span>
+              <!-- 여기를 본인 직급으로 변경 -->
+              <span style="color:#E3DCC8;margin:0 8px;">·</span>
+              <span
+                style="font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:4px;color:#A88B4E;">ZENOGRID</span>
+            </div>
+            <div style="margin-top:4px;height:1px;width:40px;background:#C9A961;"></div>
+            <!-- ⚠️ 아래 이메일과 전화번호를 수정하세요 (Version C - Compact) -->
+            <div style="margin-top:8px;font-size:11px;color:#1A1A1A;line-height:1.7;">
+              <!-- 여기를 본인 이메일로 변경 (href의 mailto: 뒤와 텍스트 모두) -->
+              <a href="mailto:zenogrid@zenogrid.co.kr"
+                style="color:#1A1A1A;text-decoration:none;">zenogrid@zenogrid.co.kr</a>
+              <span style="color:#6B7280;">&nbsp;&nbsp;&middot;&nbsp;&nbsp;</span>
+              <!-- 여기를 본인 전화번호로 변경 (href의 tel: 뒤와 텍스트 모두) -->
+              <a href="tel:+82-010-1234-5678" style="color:#1A1A1A;text-decoration:none;">010.1234.5678</a>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- === SIGNATURE END (COMPACT) ========================== -->
+      <div class="copy-button-wrapper">
+        <button class="copy-button" onclick="copySignature('sig-compact', 'feedback-compact')">📋 한 번에 복사하기</button>
+        <span id="feedback-compact" class="copy-feedback">✓ 복사되었습니다!</span>
+      </div>
+    </div>
+
+    <p style="margin-top:40px;text-align:center;font-size:10px;letter-spacing:4px;color:#B5B9C0;">
+      ZENOGRID &nbsp;·&nbsp; BRAND &nbsp;ASSETS &nbsp;·&nbsp; V.01
+    </p>
+  </div>
+</body>
+
+</html>
